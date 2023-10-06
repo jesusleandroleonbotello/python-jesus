@@ -1,3 +1,4 @@
+# algunas funciones de python
 numeros = {4,7,1,42,15}
 
 # encontrando el numero mayor de una lista
