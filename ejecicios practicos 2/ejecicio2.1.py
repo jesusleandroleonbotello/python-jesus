@@ -9,8 +9,8 @@ def obtener_compañeros(cantidad_de_compañeros):
         edad = int(input("ingrese la edad del compañero: "))
         compañero =(nombre,edad) # creamos una tupla del lso datos de un solo estudiante
         compañeros.append(compañero) # agregamos el compañero a la lista
-        compañeros.sort(key=lambda x:x[1]) # aqui lo que hacemos es ordenar los datos de la lista perousamos sort con un parametro
-        # este parametro nos ayuda a organizarlos por una clave que ne este caso seria edad 
+        compañeros.sort(key=lambda x:x[1]) # aqui lo que hacemos es ordenar los datos de la lista pero usamos sort con un parametro
+        # este parametro nos ayuda a organizarlos por una clave que en este caso seria edad 
         # recordar que podemos elegir que parametro sera el que orde com buscar y ordenar la lista 
         # pra buscar se tiene en cuenta que estar organizados de menor a mayor
         # forma menor [0] el primer dato osea menor  y [0] porque buscamos el nombre y este esta en 0 ya que edad es 1
