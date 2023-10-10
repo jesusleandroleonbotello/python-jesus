@@ -1,0 +1,17 @@
+los datos son: 
+
+nombre: juan
+apellidos: robert
+------------------
+nombre: mateo
+apellidos: gonzales
+------------------
+nombre: samuel
+apellidos: leon
+------------------
+nombre: gloria
+apellidos: sore
+------------------
+nombre: jose
+apellidos: castro
+------------------
