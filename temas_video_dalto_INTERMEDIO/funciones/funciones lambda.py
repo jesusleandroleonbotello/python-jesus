@@ -1,4 +1,4 @@
-# las funciones lambda sirven para crear funciones rapidas pero anonimas usar solo para cosas simpes 
+# las funciones lambda sirven para crear funciones rapidas pero anonimas usar solo para cosas simples 
 # no recomendado para que cumpla mas de una funcion
 
 # creando una funcion lambda para multiplicar por dos 

@@ -186,7 +186,7 @@ while True:
         print(mostrar_productos(productos_clash))
     elif op == 5:
         merca =mostrar_productos(productos_clash)
-        print(merca.sort(key=lambda x:x[2]))
+        print(merca.sort(key=lambda x:x[2]["precio"]))
     elif op == 6:
         print("\n\nGracias por usar el software. Adios")
         break
