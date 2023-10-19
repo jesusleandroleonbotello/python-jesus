@@ -191,6 +191,7 @@ while True:
                             jugador_inicia = jugador1
                         tablero(matriz)  # Mostrar el tablero al comienzo de la nueva partida
                         break
+                    
                     elif jugar_de_nuevo == "N":
                         partida = False
                         break  # Salir al menú principal
