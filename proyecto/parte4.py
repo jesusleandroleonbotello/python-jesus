@@ -59,7 +59,7 @@ def inicio_juego(ganadores):
 
 # Comprobar si un jugador ya es ganador
 def es_ganador(jugador, ganadores):
-    for ganador in ganadores[0]:
+    for ganador in ganadores:
         if jugador in ganador:
             return True
     return False
@@ -163,98 +163,33 @@ while True:
     if opcion == "1":
         matriz = [" "]*9
         ganadores = cargar_ganadores()
-        # Definir jugador1 y jugador2 antes de crear el diccionario tiempos_jugadores
-        jugador1, jugador1_ficha, jugador2, jugador2_ficha, jugador_inicia = inicio_juego(ganadores)
-        # Crear el diccionario para registrar los tiempos de los jugadores
-        tiempos_jugadores = {jugador1: 0, jugador2: 0}
+        
+        jugador1, jugador1_ficha, jugador2, jugador2_ficha = inicio_juego(ganadores)
         partida = True
-
-        # Cambio en la lógica para decidir quién inicia
-        if jugador_inicia == jugador2:
-            jugador1, jugador2 = jugador2, jugador1
-            jugador1_ficha, jugador2_ficha = jugador2_ficha, jugador1_ficha
+        ganador = 0
         
         tablero(matriz)  # Mostrar el tablero al comienzo del juego
+        while not empate(matriz) and partida:
+            movimiento_jugador(jugador1, jugador1_ficha, matriz)
+            tablero(matriz)
+            if victoria(matriz, jugador1_ficha):
+                ganador = jugador1
+                break
+                if jugar_de_nuevo == "S":
+                    return opcion == "1"
+            if not empate(matriz):
+                movimiento_jugador(jugador2, jugador2_ficha, matriz)
+                tablero(matriz)
+                if victoria(matriz, jugador2_ficha):
+                    ganador = jugador2
+                    break
         
-        while partida:
-            movimiento_jugador(jugador1, jugador1_ficha, matriz, tiempos_jugadores)
-            tablero(matriz)  # Actualizar el tablero después del movimiento
-
-            if victoria(matriz):
-                print(f"💎💎 {jugador1} ({jugador1_ficha}) Tiempo: {tiempos_jugadores[jugador1]:.2f} segundos gana la partida 💎💎")
-                # Registra el tiempo del jugador ganador
-                ganadores.append(f"{jugador1} ({jugador1_ficha}) ({time.strftime('%Y-%m-%d %H:%M:%S')}) - Tiempo: {tiempos_jugadores[jugador1]:.2f} segundos")
-                print("💎💎 Fin del juego 💎💎")
-                while True:
-                    jugar_de_nuevo = input("¿Desean jugar de nuevo con los mismos jugadores? (S/N): ").strip().upper()
-                    if jugar_de_nuevo == "S":
-                        if victoria(matriz):
-                            matriz = [" "]*9
-                            partida = True  # Inicia una nueva partida con los mismos jugadores
-                            if jugador1_ficha == "X":
-                                jugador1_ficha = "O"
-                                jugador2_ficha = "X"
-                                jugador_inicia = jugador2
-                                tiempos_jugadores[jugador1] = 0  # Reinicia el tiempo del jugador 1
-                                tiempos_jugadores[jugador2] = 0  # Reinicia el tiempo del jugador 2
-                            else:
-                                jugador1_ficha = "X"
-                                jugador2_ficha = "O"
-                                jugador_inicia = jugador2
-                                tiempos_jugadores[jugador1] = 0  # Reinicia el tiempo del jugador 1
-                                tiempos_jugadores[jugador2] = 0  # Reinicia el tiempo del jugador 2
-                            tablero(matriz)  # Mostrar el tablero al comienzo de la nueva partida
-                            # Registra el tiempo del jugador ganador
-                        elif jugador1 not in ganadores:
-                            print(f"💎💎 {jugador1} ({jugador1_ficha}) Tiempo: {tiempos_jugadores[jugador1]:.2f} segundos gana la partida 💎💎")
-                            ganadores.append(f"{jugador1} ({jugador1_ficha}) ({time.strftime('%Y-%m-%d %H:%M:%S')}) - Tiempo: {tiempos_jugadores[jugador1]:.2f} segundos")
-                            print("💎💎 Fin del juego 💎💎")
-                        else:
-                            print("💎💎 Fin del juego 💎💎")
-                        break
-                    elif jugar_de_nuevo == "N":
-                        partida = False
-                        break  # Salir al menú principal
-                    else:
-                        print("Por favor, ingrese 'S' para jugar de nuevo o 'N' para salir.")
-                    
-            elif empate(matriz):
-                print("💎💎 Empate")
-                print("💎💎 Fin del juego 💎💎")
-            
-                while True:
-                    jugar_de_nuevo = input("¿Desean jugar de nuevo con los mismos jugadores? (S/N): ").strip().upper()
-                    if jugar_de_nuevo == "S":
-                        matriz = [" "]*9
-                        partida = True  # Inicia una nueva partida con los mismos jugadores
-                        if jugador1_ficha == "X":
-                            jugador1_ficha = "O"
-                            jugador2_ficha = "X"
-                            jugador_inicia = jugador2
-                            tiempos_jugadores[jugador1] = 0  # Reinicia el tiempo del jugador 1
-                            tiempos_jugadores[jugador2] = 0  # Reinicia el tiempo del jugador 2
-                        else:
-                            jugador1_ficha = "X"
-                            jugador2_ficha = "O"
-                            jugador_inicia = jugador2
-                            tiempos_jugadores[jugador1] = 0  # Reinicia el tiempo del jugador 1
-                            tiempos_jugadores[jugador2] = 0  # Reinicia el tiempo del jugador 2
-                        tablero(matriz)  # Mostrar el tablero al comienzo de la nueva partida
-                        break
-                    elif jugar_de_nuevo == "N":
-                        partida = False
-                        break  # Salir al menú principal
-                    else:
-                        print("Por favor, ingrese 'S' para jugar de nuevo o 'N' para salir.")
-                break
-
-            if not partida:
-                break
-
-            movimiento_jugador(jugador2, jugador2_ficha, matriz, tiempos_jugadores)
-            tablero(matriz)  # Actualizar el tablero después del movimiento
-
-        guardar_ganadores(ganadores)  # Guardar la lista de ganado
+        if ganador:
+            print(f"¡{ganador} en {tiempos_jugadores[ganador]:.2f} segundos ha ganado la partida!")
+            ganadores.append(f"{ganador} Tiempo: {tiempos_jugadores[ganador]:.2f}  ")
+            guardar_ganadores(ganadores)
+        else:
+            print("Empate. No hay ganador esta vez.")
         
     if opcion == "2":
         ganadores = cargar_ganadores()
@@ -264,3 +199,4 @@ while True:
     elif opcion == "3":  # salir del programa
         print("Gracias por usar el programa")
         break
+

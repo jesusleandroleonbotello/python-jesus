@@ -51,10 +51,11 @@ def inicio_juego(ganadores):
 # Comprobar si un jugador ya es ganador
 def es_ganador(jugador, ganadores):
     for ganador in ganadores:
-        nombre, _ = ganador.split(" (")
-        if nombre == jugador:
+        if jugador in ganador:
             return True
     return False
+
+    
 
 # Crear y mostrar el tablero del juego
 def tablero(matriz):
