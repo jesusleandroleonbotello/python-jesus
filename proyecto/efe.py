@@ -61,6 +61,8 @@ def es_ganador(jugador, ganadores):
             return True
     return False
 
+
+
 # Crear y mostrar el tablero del juego
 def tablero(matriz):
     os.system("clear")  # Usa "clear" en sistemas basados en Unix

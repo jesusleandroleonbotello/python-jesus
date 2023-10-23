@@ -175,8 +175,6 @@ while True:
             if victoria(matriz, jugador1_ficha):
                 ganador = jugador1
                 break
-                if jugar_de_nuevo == "S":
-                    return opcion == "1"
             if not empate(matriz):
                 movimiento_jugador(jugador2, jugador2_ficha, matriz)
                 tablero(matriz)
