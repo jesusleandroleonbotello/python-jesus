@@ -1,0 +1,22 @@
+# Programa para determinar el camino más cercano entre una y otra ruta.
+
+
+# DEFINIENDO LAS VARIABLES PRINCIPALES
+matCiudades = [
+    1: ""
+]
+
+
+# DEFINIENDO LAS FUNCIONES COMPLEMENTARIAS
+
+
+
+# DEFINIENDO LAS FUNCIONES DE VALIDACIÓN
+
+
+
+# DEFINIENDO LAS FUNCIONES PRINCIPALES
+
+
+
+# CREANDO LA ESTRUCTURA DEL PROGRAMA
