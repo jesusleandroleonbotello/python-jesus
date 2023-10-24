@@ -1,0 +1,5 @@
+test = "95"
+
+for i in test:
+    print(i)
+    
