@@ -80,7 +80,7 @@ def buscar_producto(productos_clash):
     print("\n\n©©© 3. Buscar producto ©©©\n")
     
     id_producto = leer_id_producto()
-    exis_producto = buscar_producto(productos_clash, id_producto)
+    exis_producto = buscar_produc(productos_clash, id_producto)
     if exis_producto == False:
         print("El producto con ese código no ha sido ingresado.")
         input("CONTINUAR? ""ENTER"" ")
